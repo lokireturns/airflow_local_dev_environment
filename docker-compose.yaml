@@ -1,0 +1,28 @@
+  version: '3.4'
+
+  services:
+    airflow_dev_container:
+      build:
+        dockerfile: Dockerfile
+        args:
+          - GOOGLE_CLOUD_PROJECT #Is required on first build there is no default
+        tags:
+          - airflow:dev
+      container_name: airflow_dev
+      image: airflow:dev
+      command: airflow standalone
+      volumes:
+        - $HOME/.config/gcloud/:/var/gcloud:ro
+        - ./:/root/airflow
+        - $LOCAL_DAGS_FOLDER:/root/dags # Point dags to seprate folder for cleaner mounting
+      ports:
+        - 3040:3040
+      environment:
+        # You can configure these to suit your needs when runnign 'compose up'
+        # They are sensible defaults
+        GOOGLE_APPLICATION_CREDENTIALS: /var/gcloud/application_default_credentials.json #Usually here on mac/linux
+        AIRFLOW__CORE__LOAD_EXAMPLES: False
+        AIRFLOW__DAGS_FOLDER: /root/dags # Point dags to seprate folder for cleaner mounting
+        AIRFLOW__WEBSERVER__WEB_SERVER_PORT: 3040
+        AIRFLOW__SECRETS__BACKEND: airflow.providers.google.cloud.secrets.secret_manager.CloudSecretManagerBackend #GCP Secrets
+        APP_ENV: staging

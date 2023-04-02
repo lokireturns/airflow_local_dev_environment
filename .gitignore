@@ -1,0 +1,8 @@
+# Airflow
+airflow-webserver*
+airflow.db*
+webserver_config.py
+*password*
+logs
+data/
+gcs/
