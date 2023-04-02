@@ -6,3 +6,4 @@ webserver_config.py
 logs
 data/
 gcs/
+.DS_Store
