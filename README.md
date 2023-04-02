@@ -19,6 +19,7 @@ Before running the environment with `docker compose up` , set your local `ENV` v
 
 ```bash
 export LOCAL_DAGS_FOLDER=<full path to my dags folder>
+export APP_ENV=<staging or production or development>
 docker compose up
 ```
 
