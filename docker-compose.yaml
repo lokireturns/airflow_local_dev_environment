@@ -20,6 +20,7 @@
       environment:
         # You can configure these to suit your needs when running 'compose up'
         # They are sensible defaults
+        GOOGLE_CLOUD_PROJECT: ${GOOGLE_CLOUD_PROJECT} # You can set this from the environment
         GOOGLE_APPLICATION_CREDENTIALS: /var/gcloud/application_default_credentials.json #Usually here on mac/linux
         AIRFLOW__CORE__LOAD_EXAMPLES: FALSE
         AIRFLOW__WEBSERVER__WEB_SERVER_PORT: 3040
