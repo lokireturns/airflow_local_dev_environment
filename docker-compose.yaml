@@ -13,6 +13,7 @@
       volumes:
         - $HOME/.config/gcloud/:/var/gcloud:ro
         - ./:/root/airflow
+        - ./gcs/:/home/airflow/gcs/ # Generally used for storing runtime data
         - $LOCAL_DAGS_FOLDER:/root/airflow/dags # Point dags to seprate folder for cleaner mounting
       ports:
         - 3040:3040
